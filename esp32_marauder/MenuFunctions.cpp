@@ -1594,6 +1594,8 @@ void MenuFunctions::orientDisplay()
       uint16_t calData[5] = { 251, 3539, 331, 3534, 6 }; // tft.setRotation(0); // Portrait with TFT Shield
     #elif defined(CYD_35)
       uint16_t calData[5] = { 309, 3465, 297, 3552, 6 };
+    #elif defined(CYD_40)
+      uint16_t calData[5] = { 212, 3613, 258, 3699, 4 };  
     #elif defined(TFT_DIY)
       uint16_t calData[5] = { 339, 3470, 237, 3438, 2 }; // tft.setRotation(0); // Portrait with DIY TFT
     #endif

@@ -3,7 +3,7 @@
 #include "TouchDrvGT911.hpp"
 //#include "MenuFunctions.h"
 
-TouchDrvGT911 touch;
+extern TouchDrvGT911 touch;
 
 #if defined(CYD_24CAP) || defined(CYD_22CAP)
 #include <bb_captouch.h>
@@ -26,7 +26,7 @@ LinkedList<Station>* stations;
 LinkedList<AirTag>* airtags;
 LinkedList<Flipper>* flippers;
 
-extern "C" int ieee80211_raw_frame_sanity_check(int32_t arg, int32_t arg2, int32_t arg3){
+extern "C" __attribute__((weak)) int ieee80211_raw_frame_sanity_check(int32_t arg, int32_t arg2, int32_t arg3){
     if (arg == 31337)
       return 1;
     else
@@ -1721,6 +1721,8 @@ void WiFiScan::RunLvJoinWiFi(uint8_t scan_mode, uint16_t color) {
       uint16_t calData[5] = { 346, 3526, 253, 3542, 3 }; // Landscape CYD 3.2"
     #elif defined(CYD_35)
       uint16_t calData[5] = { 292, 3570, 295, 3436, 3 }; // Landscape CYD 3.5"
+    #elif defined(CYD_40)
+      uint16_t calData[5] = { 275, 3680, 246, 3566, 7 }; // Landscape CYD 4.0"  
     #elif defined(TFT_DIY)
       uint16_t calData[5] = { 213, 3469, 320, 3446, 1 }; // Landscape TFT DIY
       Serial.println("Using TFT DIY");
@@ -2306,6 +2308,8 @@ void WiFiScan::RunPacketMonitor(uint8_t scan_mode, uint16_t color)
           uint16_t calData[5] = { 346, 3526, 253, 3542, 3 }; // Landscape CYD 3.2"
         #elif defined(CYD_35)
           uint16_t calData[5] = { 292, 3570, 295, 3436, 3 }; // Landscape CYD 3.5"
+        #elif defined(CYD_40)
+          uint16_t calData[5] = { 212, 3613, 258, 3699, 4 }; // Landscape CYD 4.0"
         #elif defined(TFT_DIY)
           uint16_t calData[5] = { 213, 3469, 320, 3446, 1 }; // Landscape TFT DIY
           Serial.println("Using TFT DIY");
@@ -2437,6 +2441,8 @@ void WiFiScan::RunEapolScan(uint8_t scan_mode, uint16_t color)
         uint16_t calData[5] = { 346, 3526, 253, 3542, 3 }; // Landscape CYD 3.2"
       #elif defined(CYD_35)
         uint16_t calData[5] = { 292, 3570, 295, 3436, 3 }; // Landscape CYD 3.5"
+      #elif defined(CYD_40)
+        uint16_t calData[5] = { 292, 3570, 295, 3436, 3 }; // Landscape CYD 4.0"  
       #elif defined(TFT_DIY)
         uint16_t calData[5] = { 213, 3469, 320, 3446, 1 }; // Landscape TFT DIY
       #endif

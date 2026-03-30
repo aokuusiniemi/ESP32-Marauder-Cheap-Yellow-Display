@@ -9,7 +9,7 @@ https://www.online-utility.org/image/convert/to/XBM
 #include "configs.h"
 #include "TouchDrvGT911.hpp"
 
-TouchDrvGT911 touch;
+extern TouchDrvGT911 touch;
 
 #if defined(CYD_24CAP) || defined(CYD_22CAP)
 BBCapTouch bbct;
